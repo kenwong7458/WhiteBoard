@@ -10,13 +10,13 @@
 }
 
 .danger {
-    margin-left: 6px;
-    margin-right: 6px;
-    background-color: #f44336;
-    color: white;
-    text-align: center;
-    padding: 10px;
+    float: left;
+    margin-left: 5px;
     height: 30px;
+    padding: 8px;
+    background-color: #f45942;
+    color: white;
+    font-size: 14px;
 }
 
 #save {
@@ -25,10 +25,15 @@
     height: 30px;
     padding: 8px;
     background-color: #434343;
+
 }
 
 #save:hover {
     background-color: #818181;
+}
+
+a {
+    color: #ffffff;
 }
 
 #toolbar{

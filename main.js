@@ -31,6 +31,14 @@ var disengage = function() {
   context.beginPath()
 }
 
+
+var button = document.getElementById("btn-download")
+button.addEventListener("click", function(e) {
+    var dataURL = canvas.toDataURL("image/png")
+    button.href = dataURL
+})
+
+
 document.querySelector("#clearAll").onclick = function () {
   if (confirm("Are you sure you want to clear this WhiteBoard?")) {
     location.reload()

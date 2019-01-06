@@ -8,6 +8,8 @@ $img = base64_decode($data);
 $path = "images/" . uniqid() . ".png";
 if (file_put_contents($path, $img)) {
     print $path;
+    echo $img;
+    echo $path;
 } else {
     header("HTTP/1.1 500 Internal Server Error");
 }
