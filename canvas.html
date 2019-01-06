@@ -1,0 +1,241 @@
+<html>
+	<body>
+		<canvas width="1000" height="500" style="border: 1px solid black"></canvas>
+		<div>
+			<button id="clearall">Clear all</button>
+            <br/>
+            Pen:
+            <button id="pen" value="#000000" onclick="pen(this.value)"> Black (Default)</button>
+            <button id="color-red" value="#ff0000" onclick="pen(this.value)"> Red </button>
+            <button id="color-green" value="#00ff00" onclick="pen(this.value)"> Green </button>
+            <button id="color-blue" value="#0000ff" onclick="pen(this.value)"> Blue </button>
+            <button id="eraser">Eraser</button>
+            <br/>
+            Pen Width:
+			<button id="lwup">Line width up</button>
+			<button id="lwdown">Line width down</button>
+            <br/>
+            Tools:
+            <button id="drawSDCurve">Draw Supply-Demand Curve</button>
+            
+            <br/>
+            Insert Image:<button type="file" name="fileName" required="required">
+            <button id="insertImage" type="submit" name="submit">Submit</button>
+
+		</div>
+		<script>
+
+var canvas = document.querySelector("canvas")
+var ctx = canvas.getContext("2d")
+
+var rect = canvas.getBoundingClientRect()
+canvasX = rect.left
+canvasY = rect.top
+
+var mouseX
+var mouseY
+var isMouseDown = false
+
+canvas.onmousedown = function (e) {
+    console.log("mouse down")
+    isMouseDown = true
+}
+
+canvas.onmouseup = function (e) {
+    console.log("mouse up")
+    isMouseDown = false
+}
+
+/*
+ctx.fillStyle = "gray"
+ctx.fillRect(50, 50, 100, 50)
+// ctx.fillRect(left, top, width, height)
+
+ctx.fillStyle = "blue"
+ctx.fillRect(60, 60, 100, 50)
+
+ctx.fillStyle = "green"
+ctx.fillRect(70, 70, 100, 50)
+
+ctx.fillStyle = "black"
+ctx.fillRect(0, 0, 300, 70)
+*/
+
+function drawLine(startX, startY, endX, endY, color) {
+    if (color == "") {
+        color = "#000000"
+    }
+	ctx.beginPath()
+	ctx.moveTo(startX, startY)
+	ctx.lineTo(endX, endY)
+    ctx.strokeStyle = color
+	ctx.stroke()
+}
+
+function drawSDCurve() {
+    ctx.beginPath()
+    ctx.moveTo(80, 150)
+    ctx.lineTo(80, 400)
+    ctx.lineWidth = 2
+    ctx.strokeStyle = "#000000"
+    ctx.stroke()
+
+    ctx.beginPath()
+    ctx.moveTo(80, 400)
+    ctx.lineTo(650, 400)
+    ctx.lineWidth = 2
+    ctx.strokeStyle = "#000000"
+    ctx.stroke()
+
+    ctx.font = "18px Arial"
+    ctx.strokeText("Price", 60, 145)
+    ctx.strokeText("Quanity", 660, 400)
+
+}
+
+function insertImage(fileName) {
+    var imageObj = new Image()
+
+    imageObj.onload = function() {
+        ctx.drawImage(imageObj, 10,10)
+    }
+
+    imageObj.src = fileName
+
+
+}
+
+function pen(color) {
+    canvas.onmousemove = function (e) {
+    	var mx = e.clientX - canvasX
+    	var my = e.clientY - canvasY
+        console.log("Real X Y: ", e.clientX, e.clientY)
+    	console.log("canvas move", mx, my)
+
+    	if (isMouseDown) {
+    		drawLine(mouseX, mouseY, mx, my, color)
+    	}
+
+    	mouseX = mx
+    	mouseY = my
+    }
+
+}
+
+function eraser() {
+    canvas.onmousemove = function (e) {
+    	var mx = e.clientX - canvasX
+    	var my = e.clientY - canvasY
+        console.log("Real X Y: ", e.clientX, e.clientY)
+    	console.log("canvas move", mx, my)
+
+    	if (isMouseDown) {
+            ctx.fillStyle = "#ffffff";
+            ctx.beginPath()
+            ctx.moveTo(mx, my)
+            ctx.arc(mx, my, 20, 0, Math.PI * 2, false)
+            ctx.fill()
+
+    	}
+
+    	mouseX = mx
+    	mouseY = my
+    }
+
+
+}
+
+/*
+function drawStraightLine () {
+    canvas.onmousedown = function (e) {
+    	console.log("mouse down")
+    	isMouseDown = true
+        startX = e.clientX - canvasX
+        startY = e.clientY - canvasY
+
+    }
+
+    canvas.onmouseup = function (e) {
+    	console.log("mouse up")
+    	isMouseDown = false
+        var endX = e.clientX - canvasX
+        var endY = e.clientY - canvasY
+
+        drawLine(startX, startY, endX, endY)
+
+    }
+
+    canvas.onmousemove = function(e) {
+        console.log("drawing a straight line.")
+    }
+
+
+}
+*/
+document.querySelector("#clearall").onclick = function () {
+	ctx.clearRect(0, 0, 1000, 500)
+    location.reload()
+}
+
+/*
+document.querySelector("#pen").onclick = function () {
+    console.log("pen")
+    pen("#000000")
+}
+
+document.querySelector("#color-red").onclick = function () {
+    console.log("color-red")
+    ctx.fillStyle = "#ff0000"
+    pen("#ff0000")
+}
+
+document.querySelector("#color-blue").onclick = function () {
+    console.log("color-blue")
+    ctx.fillStyle = "#0000ff"
+    pen("#0000ff")
+}
+
+document.querySelector("#color-green").onclick = function () {
+    console.log("color-green")
+    ctx.fillStyle = "#00ff00"
+    pen("#00ff00")
+}
+
+*/
+
+document.querySelector("#eraser").onclick = function () {
+    console.log("earser")
+    eraser("#ffffff")
+}
+
+document.querySelector("#lwup").onclick = function () {
+	console.log("Line width up")
+	ctx.lineWidth += 1
+}
+
+document.querySelector("#lwdown").onclick = function () {
+	console.log("Line width down")
+	ctx.lineWidth -= 1
+}
+
+document.querySelector("#drawSDCurve").onclick = function () {
+    console.log("Draw Supply-Demand Curve")
+    drawSDCurve()
+}
+
+/*
+document.querySelector("#straightLine").onclick = function () {
+    console.log("Draw straight line")
+    drawStraightLine()
+}
+
+*/
+document.querySelector("#insertImage").onclick = function () {
+    console.log("Insert Image")
+    var fileName = "Hong-Kong.jpg"
+    insertImage(fileName)
+}
+
+		</script>
+	</body>
+</html>
