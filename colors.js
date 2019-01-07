@@ -1,7 +1,7 @@
 var colors = ["black", "grey", "white", "red", "orange", "yellow", "green",
               "blue", "indigo", "violet"]
 
-for(var i=0, n=colors.length; i<n; i++) {
+for(var i=0; i<colors.length; i++) {
   var swatch = document.createElement("div")
   swatch.className = "swatch"
   swatch.style.backgroundColor = colors[i]

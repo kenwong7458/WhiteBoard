@@ -1,5 +1,5 @@
-var canvas = document.getElementById('canvas')
-var context = canvas.getContext('2d')
+var canvas = document.getElementById("canvas")
+var context = canvas.getContext("2d")
 
 var radius = 10
 var dragging = false

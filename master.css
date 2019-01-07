@@ -7,6 +7,8 @@
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select: none;
+
+
 }
 
 .danger {
@@ -14,9 +16,13 @@
     margin-left: 5px;
     height: 30px;
     padding: 8px;
-    background-color: #f45942;
+    background-color: #d43434;
     color: white;
     font-size: 14px;
+}
+
+.danger:hover {
+    background-color: #f24848;
 }
 
 #save {
@@ -32,13 +38,17 @@
     background-color: #818181;
 }
 
+#eraser {
+    float: right;
+}
+
 #loadImage {
     float: right;
     margin-right: 20px;
     height: 30px;
     padding: 8px;
     background-color: #434343;
-    
+
 
 }
 
