@@ -32,18 +32,54 @@ var disengage = function() {
 }
 
 
-var button = document.getElementById("btn-download")
-button.addEventListener("click", function(e) {
+var downloadButton = document.getElementById("btn-download")
+downloadButton.addEventListener("click", function(e) {
     var dataURL = canvas.toDataURL("image/png")
-    button.href = dataURL
+    downloadButton.href = dataURL
 })
 
 
-document.querySelector("#clearAll").onclick = function () {
+var clearButton = document.getElementById("clearAll")
+clearButton.addEventListener("click", function() {
   if (confirm("Are you sure you want to clear this WhiteBoard?")) {
     location.reload()
   }
-}
+})
+
+// Reference: https://www.html5rocks.com/zh/tutorials/file/dndfiles/
+var loadImg = document.getElementById('files')
+loadImg.addEventListener('change', function(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          //Render the image to canvas.
+          var imageObj = new Image()
+          imageObj.onload = function() {
+              context.drawImage(imageObj, 10,10)
+          }
+          imageObj.src = e.target.result
+        }
+      })(f)
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+}, false)
+
+        //document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
 
 canvas.addEventListener("mousedown", engage)
 canvas.addEventListener("mousemove", putPoint)

@@ -1,4 +1,4 @@
-var colors = ["black", "grey", "white", "red", "orange", "green", "yellow",
+var colors = ["black", "grey", "white", "red", "orange", "yellow", "green",
               "blue", "indigo", "violet"]
 
 for(var i=0, n=colors.length; i<n; i++) {
@@ -25,4 +25,4 @@ function setSwatch(e) {
   swatch.className += " active"
 }
 
-setSwatch({target: document.getElementsByClassName("swatch")[0]})
+setSwatch({target: document.getElementByClassName("swatch")[0]})

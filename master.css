@@ -32,6 +32,20 @@
     background-color: #818181;
 }
 
+#loadImage {
+    float: right;
+    margin-right: 20px;
+    height: 30px;
+    padding: 8px;
+    background-color: #434343;
+    
+
+}
+
+#loadImage:hover {
+    background-color: #818181;
+}
+
 a {
     color: #ffffff;
 }
