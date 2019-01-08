@@ -42,6 +42,11 @@
     float: right;
 }
 
+#graph-grid {
+    float: right;
+    margin-right: 5px;
+}
+
 #loadImage {
     float: right;
     margin-right: 20px;
