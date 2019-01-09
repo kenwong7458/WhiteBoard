@@ -3,17 +3,24 @@
     <head>
         <meta charset="utf-8">
         <title>WhiteBoard</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://unpkg.com/konva@2.4.2/konva.min.js"></script>
         <link rel="stylesheet" href="master.css" />
     </head>
     <body style = "margin: 0">
         <div id="toolbar">
+
+            <div id="title">
+                <b>WhiteBoard</b>
+            </div>
+
             <div id="rad">
                 Radius: <b><span id="radval">10</span></b>
                 <div id="decrad" class="radcontrol">-</div>
                 <div id="incrad" class="radcontrol">+</div>
             </div>
 
-            <button class="button danger" id="clearAll">Clear</button>
+            <button class="btn btn-danger" id="clearAll">Clear</button>
 
             <div id="colors"></div>
 
@@ -21,8 +28,31 @@
                 <img src="thumbnail/eraser-icon.png" width="40px" height="40px"/>
             </div>
 
-            <div id="graph-grid">
-                <img src="thumbnail/graph-grid-icon.png" width="40px" height="40px"/>
+
+            <div id="shape">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Shape
+                    </button>
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a class="dropdown-item" href="#" id="rectangle">Rectangle</a>
+                        </li>
+
+
+                        <li>
+                            <a class="dropdown-item" href="#" id="circle">Circle</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="#" id="triangle">Triangle</a>
+                        </li>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Polygon</a>
+                    </ul>
+                </div>
             </div>
 
             <div id="loadImage">
@@ -30,17 +60,30 @@
             </div>
 
             <div id="save">
-                <a href="#" class="button" id="btn-download" download="WhiteBoard-download.png">Download</a>
+                <a href="#" id="btn-download" class="button" download="WhiteBoard-download.png">Download</a>
             </div>
 
         </div>
 
-        <canvas id="canvas" style="display:block">
+        <canvas id="canvas" style="display:block; background: url('thumbnail/background.png')">
+            Your browser does not support HTML5 Canvas, please update your browser.
         </canvas>
+
+        <div id="container">
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
         <script src="main.js"></script>
         <script src="radius.js"></script>
         <script src="colors.js"></script>
         <script src="eraser.js"></script>
-        <script src="graph-grid.js"></script>
+        <script src="shape.js"></script>
+        <script src="download.js"></script>
+        <script src="loadImage.js"></script>
+        <script src="drag-and-drop.js"></script>
+        
     </body>
 </html>

@@ -12,6 +12,7 @@ for(var i=0; i<colors.length; i++) {
 function setColor(color) {
   context.fillStyle = color
   context.strokeStyle = color
+  context.globalCompositeOperation="source-over"
   var active = document.getElementsByClassName("active")[0]
 
   if (active) {

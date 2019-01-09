@@ -7,27 +7,53 @@
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select: none;
-
-
 }
 
-.danger {
+#canvas {
+    left: 0px;
+    top: 0px;
+}
+
+#container {
+    position: absolute;
+    left: 0px;
+    top: 50px;
+}
+#toolbar{
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2f2f2f;
+    color: white;
+}
+
+#title {
+    float:left;
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+#clearAll {
     float: left;
-    margin-left: 5px;
+    margin-left: 10px;
     height: 30px;
     padding: 8px;
     background-color: #d43434;
     color: white;
     font-size: 14px;
+    text-align: center;
 }
 
-.danger:hover {
+#clearAll:hover {
     background-color: #f24848;
 }
 
 #save {
     float: right;
-    margin-right: 20px;
+    margin-right: 25px;
     height: 30px;
     padding: 8px;
     background-color: #434343;
@@ -38,42 +64,40 @@
     background-color: #818181;
 }
 
-#eraser {
-    float: right;
-}
-
-#graph-grid {
-    float: right;
-    margin-right: 5px;
-}
-
 #loadImage {
     float: right;
     margin-right: 20px;
     height: 30px;
     padding: 8px;
     background-color: #434343;
-
-
 }
 
 #loadImage:hover {
     background-color: #818181;
 }
 
+#eraser {
+    float: right;
+}
+
+#eraser:hover {
+    transform: scale(1.2)
+}
+
+#eraser.active {
+    box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 255, 0.5);
+}
+
+#shape{
+    float: right;
+    margin-right: 5px;
+}
+
 a {
     color: #ffffff;
 }
 
-#toolbar{
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    background-color: #2f2f2f;
-    color: white;
-}
+
 
 .radcontrol{
     width: 30px;
@@ -102,8 +126,13 @@ a {
     background-color: cyan;
 }
 
+.swatch:hover {
+    transform: scale(1.4)
+}
+
 .swatch.active {
     border: 2px solid white;
     box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 255, 0.5);
+    transform: scale(1.2)
 
 }

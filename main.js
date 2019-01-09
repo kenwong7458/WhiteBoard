@@ -7,6 +7,9 @@ var dragging = false
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
+canvas.style.left = "0px"
+canvas.style.top = "0px"
+
 context.lineWidth = radius*2
 
 var putPoint = function(e) {
@@ -18,6 +21,7 @@ var putPoint = function(e) {
     context.fill()
     context.beginPath()
     context.moveTo(e.clientX, e.clientY)
+    context.save()
   }
 }
 
@@ -31,13 +35,9 @@ var disengage = function() {
   context.beginPath()
 }
 
-
-var downloadButton = document.getElementById("btn-download")
-downloadButton.addEventListener("click", function(e) {
-    var dataURL = canvas.toDataURL("image/png")
-    downloadButton.href = dataURL
-})
-
+canvas.addEventListener("mousedown", engage)
+canvas.addEventListener("mousemove", putPoint)
+canvas.addEventListener("mouseup", disengage)
 
 var clearButton = document.getElementById("clearAll")
 clearButton.addEventListener("click", function() {
@@ -46,41 +46,6 @@ clearButton.addEventListener("click", function() {
   }
 })
 
-// Reference: https://www.html5rocks.com/zh/tutorials/file/dndfiles/
-var loadImg = document.getElementById('files')
-loadImg.addEventListener('change', function(evt) {
-    var files = evt.target.files; // FileList object
 
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
-
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          //Render the image to canvas.
-          var imageObj = new Image()
-          imageObj.onload = function() {
-              context.drawImage(imageObj, 10,10)
-          }
-          imageObj.src = e.target.result
-        }
-      })(f)
-
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-}, false)
 
         //document.getElementById('files').addEventListener('change', handleFileSelect, false);
-
-
-canvas.addEventListener("mousedown", engage)
-canvas.addEventListener("mousemove", putPoint)
-canvas.addEventListener("mouseup", disengage)

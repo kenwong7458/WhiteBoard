@@ -11,9 +11,9 @@ var setRadius = function(newRadius) {
   radSpan.innerHTML = radius
 }
 
-var minRad = 0.5
+var minRad = 5
 var maxRad = 100
-var defaultRad = 20
+var defaultRad = 10
 var interval = 5
 var radSpan = document.getElementById("radval")
 var decRad = document.getElementById("decrad")
