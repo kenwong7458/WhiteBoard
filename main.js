@@ -12,6 +12,15 @@ canvas.style.top = "0px"
 
 context.lineWidth = radius*2
 
+var objectOfHistory = { "undoStack":[], "redoStack":[] }
+
+function saveState() {
+  var dataURL = canvas.toDataURL("image/png")
+  objectOfHistory.undoStack.push(dataURL)
+}
+
+saveState()
+
 var putPoint = function(e) {
   if(dragging) {
     context.lineTo(e.clientX, e.clientY)
@@ -21,11 +30,14 @@ var putPoint = function(e) {
     context.fill()
     context.beginPath()
     context.moveTo(e.clientX, e.clientY)
-    context.save()
   }
+
+
 }
 
 var engage = function(e) {
+  lastX = e.clientX
+  lastY = e.clientY
   dragging = true
   putPoint(e)
 }
@@ -33,6 +45,7 @@ var engage = function(e) {
 var disengage = function() {
   dragging = false
   context.beginPath()
+  saveState()
 }
 
 canvas.addEventListener("mousedown", engage)

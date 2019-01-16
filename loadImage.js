@@ -19,13 +19,19 @@ loadImg.addEventListener("change", function(evt) {
           //Render the image to canvas.
           var imageObj = new Image()
           imageObj.onload = function() {
-              context.drawImage(imageObj, 10,10)
+              context.drawImage(imageObj, canvas.width/2 - imageObj.width/2,
+                                          canvas.height/2 - imageObj.height/2)
           }
           imageObj.src = e.target.result
         }
+
       })(f)
 
       // Read in the image file as a data URL.
       reader.readAsDataURL(f)
+
     }
+    saveState()
+
+
 }, false)
