@@ -1,6 +1,12 @@
 var earserButton = document.getElementById("eraser")
 earserButton.addEventListener("click", function() {
   context.lineWidth = radius * 2
+
+  var active = document.getElementsByClassName("active")[0] //remove active status of color
+  if (active) {
+    active.className = "swatch"
+  }
+
   canvas.onmousemove = function(e) {
     if(dragging) {
       console.log("mouse dragging in eraser")
