@@ -32,6 +32,10 @@
 
             <div id="colors"></div>
 
+            <div id="pen">
+                <img src="thumbnail/pen-icon.png" width="40px" height="40px" />
+            </div>
+
             <div id="eraser">
                 <img src="thumbnail/eraser-icon.png" width="40px" height="40px"/>
             </div>
@@ -40,10 +44,9 @@
             <div id="shape">
                 <div class="btn-group">
                     <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Shape
+                    Draw Shape
                     </button>
                     <ul class="dropdown-menu">
-
                         <li>
                             <a class="dropdown-item" href="#" id="rectangle">Rectangle</a>
                         </li>
@@ -54,7 +57,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item" href="#" id="triangle">Triangle</a>
+                            <a class="dropdown-item" href="#" id="triangle_RHS">Triangle (R.H.S)</a>
                         </li>
 
                         <div class="dropdown-divider"></div>
@@ -84,16 +87,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        <script src="main.js"></script>
-        <script src="radius.js"></script>
-        <script src="undo.js"></script>
-        <script src="redo.js"></script>
-        <script src="colors.js"></script>
-        <script src="eraser.js"></script>
-        <script src="shape.js"></script>
-        <script src="download.js"></script>
-        <script src="loadImage.js"></script>
-        <script src="drag-and-drop.js"></script>
+        <script src="js/saveState.js"></script>
+        <script src="js/undo.js"></script>
+        <script src="js/redo.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/colors.js"></script>
+        <script src="js/pen.js"></script>
+        <script src="js/eraser.js"></script>
+        <script src="js/radius.js"></script>            
+        <script src="js/shape.js"></script>
+        <script src="js/download.js"></script>
+        <script src="js/loadImage.js"></script>
+        <script src="js/drag-and-drop.js"></script>
 
     </body>
 </html>

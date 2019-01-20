@@ -23,6 +23,7 @@ canvas.addEventListener("dragover", function (evt) {
 
 canvas.addEventListener("drop", function (evt) {
   console.log("dropped")
+  saveToHistory()
   var files = evt.dataTransfer.files
   console.log(files)
   if(files.length > 0) {
@@ -47,7 +48,7 @@ canvas.addEventListener("drop", function (evt) {
 
   evt.preventDefault()
 
-  saveState()
+  saveCurrentState()
 
 }, false)
 

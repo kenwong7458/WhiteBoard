@@ -1,6 +1,7 @@
 // Reference: https://www.html5rocks.com/zh/tutorials/file/dndfiles/
 var loadImg = document.getElementById("files")
 loadImg.addEventListener("change", function(evt) {
+  saveToHistory()
     var files = evt.target.files // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -31,7 +32,7 @@ loadImg.addEventListener("change", function(evt) {
       reader.readAsDataURL(f)
 
     }
-    saveState()
+    saveCurrentState()
 
 
 }, false)
