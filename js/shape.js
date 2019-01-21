@@ -31,6 +31,7 @@ rectangle.addEventListener("click", function () {
       saveCurrentState()
 
     }
+    setSwatch({target: document.getElementsByClassName("swatch")[0]})
 })
 
 circle.addEventListener("click", function() {
@@ -54,7 +55,7 @@ circle.addEventListener("click", function() {
     context.stroke()
     saveCurrentState()
   }
-
+  setSwatch({target: document.getElementsByClassName("swatch")[0]})
 })
 
 triangle_RHS.addEventListener("click", function() {
@@ -81,5 +82,5 @@ triangle_RHS.addEventListener("click", function() {
     context.stroke()
     saveCurrentState()
   }
-
+  setSwatch({target: document.getElementsByClassName("swatch")[0]})
 })
